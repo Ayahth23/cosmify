@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     android:theme="@style/Theme.Cosmify.AppWidgetContainer">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/example_appwidget_preview"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"
+        />
+
     <TextView
         android:id="@+id/appwidget_text"
         style="@style/Widget.Cosmify.AppWidget.InnerView"
