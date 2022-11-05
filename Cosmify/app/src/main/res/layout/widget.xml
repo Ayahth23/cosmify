@@ -5,11 +5,12 @@
     android:theme="@style/Theme.Cosmify.AppWidgetContainer">
 
     <ImageView
+        android:id="@+id/appwidget_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/example_appwidget_preview"
         android:scaleType="centerCrop"
         android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
         />
 
     <TextView
