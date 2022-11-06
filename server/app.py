@@ -3,9 +3,7 @@ import json
 import time
 import requests
 import nasapy
-from datetime import datetime
 import urllib.request
-# from gtts import gTTS
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
@@ -21,9 +19,7 @@ def make_config(link, title):
 def pic_of_day():
     k = os.getenv('NASA_KEY')
     nasa = nasapy.Nasa(key = k)
-    d = datetime.today().strftime('%Y-%m-%d')
-    apod = nasa.picture_of_the_day(date=d, hd=True)
-
+    apod = nasa.picture_of_the_day()
     if(apod["media_type"] == "image"):
 
         #POINT B:
@@ -53,5 +49,11 @@ def fact_of_day():
             "The International Space Station is the largest ever crewed object in space.",
             "Spacecraft have visited all the known planets in our solar system."]
     day = int((time.time()//86400)%len(facts))
-    
+
     return json.dumps({"fact": facts[day]})
+
+@app.route('/next-launch', methods=['GET'])
+def next_launch():
+    req = requests.get('https://fdo.rocketlaunch.live/json/launches/next/5').json()
+    first = req['result'][0]
+    return first
