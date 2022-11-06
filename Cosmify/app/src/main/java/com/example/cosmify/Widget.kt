@@ -104,7 +104,8 @@ internal fun updateAppWidget(
 
             val ran = (0..100).random()
             if (ran < 50) {
-                ret = fact.getString("fact")
+                ret = "Fact of the Day:\n"
+                ret += fact.getString("fact")
                 views.setFloat(R.id.appwidget_text, "setTextSize", 15F)
             }
             else {
