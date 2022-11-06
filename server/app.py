@@ -44,8 +44,8 @@ def fact_of_day():
             "There is no sound in space because molecules are too far apart to transmit sound.",
             "The space between galaxies is not completely empty but has an average of one atom per cubic meter.",
             "There are an estimated 100-400 billion stars in our galaxy, the Milky Way.",
-            "The universe is observed to be 13.8 billion years old and has been expanding since its formation in the Big Bang."
-            "In the observable universe there are an estimated 2 trillion (2,000,000,000,000) galaxies."
+            "The universe is observed to be 13.8 billion years old and has been expanding since its formation in the Big Bang.",
+            "In the observable universe there are an estimated 2 trillion (2,000,000,000,000) galaxies.",
             "The International Space Station is the largest ever crewed object in space.",
             "Spacecraft have visited all the known planets in our solar system."]
     day = int((time.time()//86400)%len(facts))
