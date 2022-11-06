@@ -4,6 +4,15 @@
     android:layout_height="match_parent"
     android:theme="@style/Theme.Cosmify.AppWidgetContainer">
 
+    <ImageView
+        android:id="@+id/appwidget_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        />
+
     <TextView
         android:id="@+id/appwidget_text"
         style="@style/Widget.Cosmify.AppWidget.InnerView"
@@ -17,5 +26,7 @@
         android:contentDescription="@string/appwidget_text"
         android:text="@string/appwidget_text"
         android:textSize="24sp"
+        android:textColor="@color/white"
+        android:background="@android:color/transparent"
         android:textStyle="bold|italic" />
 </RelativeLayout>
