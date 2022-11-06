@@ -94,7 +94,6 @@ internal fun updateAppWidget(
             val newTime = zonedDateTime.withZoneSameInstant(ZoneId.of(TimeZone.getDefault().id))
             val ret = DateTimeFormatter.ofPattern("MM/dd/yyyy - hh:mm").format(newTime)
 
-//            val widgetText = context.getString(R.string.appwidget_text)
             // Construct the RemoteViews object
             val views = RemoteViews(context.packageName, R.layout.widget)
             views.setTextViewText(R.id.appwidget_text, ret)
