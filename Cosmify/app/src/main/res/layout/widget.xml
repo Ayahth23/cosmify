@@ -28,5 +28,9 @@
         android:textSize="24sp"
         android:textColor="@color/white"
         android:background="@android:color/transparent"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold|italic"
+        android:shadowColor="@color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"/>
 </RelativeLayout>
