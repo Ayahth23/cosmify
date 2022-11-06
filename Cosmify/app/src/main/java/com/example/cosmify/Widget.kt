@@ -17,7 +17,7 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
-
+import kotlin.random.Random.Default.nextInt
 
 /**
  * Implementation of App Widget functionality.
@@ -88,14 +88,31 @@ internal fun updateAppWidget(
             val rocketLaunch =
                 JSONObject(URL("https://cosmify-367717.uk.r.appspot.com/next-launch").readText())
             val nextLaunch = rocketLaunch.getString("win_open")
+            val name = rocketLaunch.getJSONObject("provider").getString("name")
+            val state = rocketLaunch.getJSONObject("pad").getJSONObject("location").getString("statename")
 
-//            val pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z")
             val zonedDateTime = ZonedDateTime.parse(nextLaunch)
             val newTime = zonedDateTime.withZoneSameInstant(ZoneId.of(TimeZone.getDefault().id))
-            val ret = DateTimeFormatter.ofPattern("MM/dd/yyyy - hh:mm").format(newTime)
+            var ret = "Next Rocket Launch:\n"
+            ret += "\tName: $name\n"
+            ret += "\tDate/Time: " + DateTimeFormatter.ofPattern("MM/dd/yyyy - hh:mm").format(newTime) + "\n"
+            ret += "\tState: $state"
+
+            val fact = JSONObject(URL("https://cosmify-367717.uk.r.appspot.com/fact-of-day").readText())
+
+            val views = RemoteViews(context.packageName, R.layout.widget)
+
+            val ran = (0..100).random()
+            if (ran < 50) {
+                ret = "Fact of the Day:\n"
+                ret += fact.getString("fact")
+                views.setFloat(R.id.appwidget_text, "setTextSize", 15F)
+            }
+            else {
+                views.setFloat(R.id.appwidget_text, "setTextSize", 20F)
+            }
 
             // Construct the RemoteViews object
-            val views = RemoteViews(context.packageName, R.layout.widget)
             views.setTextViewText(R.id.appwidget_text, ret)
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
